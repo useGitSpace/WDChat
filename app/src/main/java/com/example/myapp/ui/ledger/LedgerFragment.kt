@@ -89,10 +89,4 @@ class LedgerFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        var args = arguments
-        var loc = args?.getString("Location")
-        Toast.makeText(this.context, loc, Toast.LENGTH_LONG).show()
-    }
 }

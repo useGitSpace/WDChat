@@ -27,7 +27,6 @@ class DirectMessageFragment : Fragment() {
         button.setOnClickListener{
 
         }
-
         return root
     }
 }
