@@ -28,12 +28,11 @@ class MainActivity : AppCompatActivity()
                 Toast.makeText(this, "Welcome " + editTextName.text, Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, Main2Activity::class.java)
+                intent.putExtra("username", editTextName.text)
                 startActivity(intent)
             }
             else{
                 Toast.makeText(this, "Please enter your name.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Main2Activity::class.java)    // change in production
-                startActivity(intent)   //change in production
 
             }
         }

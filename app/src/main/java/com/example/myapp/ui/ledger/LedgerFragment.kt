@@ -36,9 +36,9 @@ class LedgerFragment : Fragment() {
 
 
 
-        list.add(Model("BadBOi", "Hello", R.drawable.btn_rounded))
-        list.add(Model("BadBOi1", "Hello!", R.drawable.btn_rounded))
-        list.add(Model("BadBOi2", "Hello!!", R.drawable.btn_rounded))
+        list.add(Model("Yelahanka", "Satellite bus station", R.drawable.helpwe1))
+        list.add(Model("SVIT", "Canteen", R.drawable.btn_rounded))
+        list.add(Model("SVIT", "Boys Hostel"))
       //  list.add(Model("BadBOi3", "Hello!!!", R.drawable.btn_rounded))
 
         listView.adapter = MyAdapter(root.context, R.layout.row, list)
@@ -83,7 +83,7 @@ class LedgerFragment : Fragment() {
                 val location = data!!.getStringExtra("Location")
                 val landmark = data!!.getStringExtra("Landmark")
 
-                list.add(Model(location, landmark, R.drawable.btn_rounded))
+                list.add(Model(location, landmark))
                 listView.adapter = MyAdapter(root.context, R.layout.row, list)
             }
         }
