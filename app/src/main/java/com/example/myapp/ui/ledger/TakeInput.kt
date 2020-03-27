@@ -41,7 +41,7 @@ class TakeInput : AppCompatActivity() {
         arrayOf(location, landmark)
         intent.putExtra("Location", location)
         intent.putExtra("Landmark", landmark)
-        setResult(0, intent)
+        setResult(7070, intent)
         finish()
         this.finish()
 

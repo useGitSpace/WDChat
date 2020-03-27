@@ -69,7 +69,7 @@ class LedgerFragment : Fragment() {
 //            dialog.show()
             val intent = Intent(root.context, TakeInput::class.java)
             intent.putExtra("key", "value")
-            startActivityForResult(intent, 0)
+            startActivityForResult(intent, 6969)
         }
 
         return root
@@ -78,8 +78,8 @@ class LedgerFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == 0){
-            if(resultCode == 0){
+        if(requestCode == 6969){
+            if(resultCode == 7070){
                 val location = data!!.getStringExtra("Location")
                 val landmark = data!!.getStringExtra("Landmark")
 
