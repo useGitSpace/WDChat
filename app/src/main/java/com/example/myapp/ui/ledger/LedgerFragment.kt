@@ -24,6 +24,7 @@ class LedgerFragment : Fragment() {
     var list = mutableListOf<Model>()
     private lateinit var listView: ListView
     private lateinit var root: View
+    private lateinit var thisFragment:LedgerFragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -86,5 +87,6 @@ class LedgerFragment : Fragment() {
             }
         }
     }
+
 
 }
