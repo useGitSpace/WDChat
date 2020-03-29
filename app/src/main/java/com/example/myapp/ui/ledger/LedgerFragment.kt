@@ -34,12 +34,10 @@ class LedgerFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_ledger, container, false)
         listView = root.findViewById<ListView>(R.id.listView)
 
-
-
-        list.add(Model("Yelahanka", "Satellite bus station", R.drawable.helpwe1))
+        list.add(Model("Yelahanka", "Satellite bus station", R.drawable.helpwe))
         list.add(Model("SVIT", "Canteen", R.drawable.btn_rounded))
-        list.add(Model("SVIT", "Boys Hostel"))
-      //  list.add(Model("BadBOi3", "Hello!!!", R.drawable.btn_rounded))
+        list.add(Model("SVIT", "Boys Hostel", R.drawable.btn_rounded))
+        //  list.add(Model("BadBOi3", "Hello!!!", R.drawable.btn_rounded))
 
         listView.adapter = MyAdapter(root.context, R.layout.row, list)
 
@@ -48,7 +46,7 @@ class LedgerFragment : Fragment() {
         }
         val add = root.findViewById<FloatingActionButton>(R.id.add)
         add.setOnClickListener{
-//            val  dialogBuilder = AlertDialog.Builder(root.context)
+            //            val  dialogBuilder = AlertDialog.Builder(root.context)
 //            dialogBuilder.setTitle("Location?")
 //            val necessities = arrayOf("Water", "Food","First-Aid","Sanitation");
 //            val checked = booleanArrayOf(true, false, true, false)
@@ -83,7 +81,7 @@ class LedgerFragment : Fragment() {
                 val location = data!!.getStringExtra("Location")
                 val landmark = data!!.getStringExtra("Landmark")
 
-                list.add(Model(location, landmark))
+                list.add(Model(location, landmark, R.drawable.btn_rounded))
                 listView.adapter = MyAdapter(root.context, R.layout.row, list)
             }
         }

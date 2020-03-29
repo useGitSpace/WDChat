@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/navigation_directmessage"
-        android:icon="@drawable/ic_chart_black_24dp"
+        android:icon="@drawable/ic_near_black_24dp"
         android:title="@string/title_directmessage" />
 
     <item
         android:id="@+id/navigation_globalmessage"
-        android:icon="@drawable/ic_near_black_24dp"
+        android:icon="@drawable/ic_chart_black_24dp"
         android:title="@string/title_globalmessage" />
 
     <item

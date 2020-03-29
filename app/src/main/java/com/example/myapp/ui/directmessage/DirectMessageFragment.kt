@@ -1,44 +1,73 @@
 package com.example.myapp.ui.directmessage
 
+import android.content.Context
+import android.database.DataSetObserver
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AbsListView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ListView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
+import com.delta.chatscreen.ChatArrayAdapter
 import com.example.myapp.R
-import com.example.myapp.ui.main.Model
-import com.example.myapp.ui.main.MyAdapter
-import kotlinx.android.synthetic.main.fragment_ledger.view.*
-import org.w3c.dom.Text
 
+
+data class ChatMessage(var left: Boolean, var message: String)
+//data class ChatMessage1(val message : String, val time: Int)
 
 class DirectMessageFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
+    private var chatArrayAdapter: ChatArrayAdapter? = null
+    private var listView: ListView? = null
+    private var chatText: EditText? = null
+    private var buttonSend: Button? = null
+    private var side = false
+    private var globalContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_directmessage, container, false)
-        val button = root.findViewById<ImageView>(R.id.sendButton)
-        val sendText= root.findViewById<TextView>(R.id.editText).getText()
-        val bubble = root.findViewById<TextView>(R.id.message_body)
-        val listView = root.findViewById<ListView>(R.id.messages_view)
-        val al = ArrayList<TextView>()
+        globalContext = this.activity
+        super.onCreate(savedInstanceState)
+        buttonSend = root.findViewById<View>(R.id.send) as Button
+        listView = root.findViewById<View>(R.id.msgview) as ListView
 
-        button.setOnClickListener{
-            //bubble.setText(sendText)
-            Toast.makeText(root.context, sendText, Toast.LENGTH_LONG).show()
+        chatArrayAdapter =
+            ChatArrayAdapter(globalContext!!, R.layout.right)
+
+        listView?.adapter = chatArrayAdapter
+        chatText = root.findViewById<View>(R.id.msg) as EditText
+        chatText!!.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                sendChatMessage()
+            } else false
         }
-
+        buttonSend?.setOnClickListener { sendChatMessage() }
+        listView?.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+        listView?.adapter = chatArrayAdapter
+        //to scroll the list view to bottom on data change
+        chatArrayAdapter!!.registerDataSetObserver(object : DataSetObserver() {
+            override fun onChanged() {
+                super.onChanged()
+                listView!!.setSelection(chatArrayAdapter!!.count - 1)
+            }
+        })
         return root
     }
+
+    private fun sendChatMessage(): Boolean {
+        chatArrayAdapter?.add(ChatMessage(side, chatText!!.text.toString()))
+        chatText!!.setText("")
+        side = !side
+
+        return true
+    }
+
+
 }

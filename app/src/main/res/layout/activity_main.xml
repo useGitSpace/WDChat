@@ -9,14 +9,12 @@
     android:paddingRight="16dp">
 
 
-
-
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
         android:backgroundTint="#2196F3"
         android:ems="10"
@@ -32,10 +30,10 @@
         android:layout_below="@id/editText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:bottomLeftRadius="8dp"
         android:background="@drawable/btn_rounded"
-        android:textColor="#FFFFFF"
-        android:text="Register" />
+        android:bottomLeftRadius="8dp"
+        android:text="Register"
+        android:textColor="#FFFFFF" />
 
     <ImageView
         android:id="@+id/imageView"

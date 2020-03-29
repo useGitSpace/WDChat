@@ -1,2 +1,1 @@
-# WDChat
-WiFi Direct Chat
+# wifi_chat

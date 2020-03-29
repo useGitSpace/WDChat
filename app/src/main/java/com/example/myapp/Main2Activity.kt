@@ -1,22 +1,12 @@
 package com.example.myapp
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import android.view.Window
-import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager.widget.ViewPager
-import com.example.myapp.ui.main.Model
-import com.example.myapp.ui.main.MyAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Main2Activity : AppCompatActivity() {
 
@@ -36,5 +26,16 @@ class Main2Activity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
     }
+
+//    private fun addFragment()
+//    {
+//        val manager = supportFragmentManager
+//        val transaction: FragmentTransaction = manager.beginTransaction()
+//        var ledgerFragment = LedgerFragment()
+//        transaction.add(R.id.main2_container, ledgerFragment)
+//        transaction.commit()
+//    }
+
 }
