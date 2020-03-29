@@ -25,6 +25,13 @@ class LedgerFragment : Fragment() {
     private lateinit var listView: ListView
     private lateinit var root: View
     private lateinit var thisFragment:LedgerFragment
+
+    init{
+        list.add(Model("Yelahanka", "Satellite bus station", R.drawable.helpwe))
+        list.add(Model("SVIT", "Canteen", R.drawable.btn_rounded))
+        list.add(Model("SVIT", "Boys Hostel"))
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,10 +41,6 @@ class LedgerFragment : Fragment() {
             ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_ledger, container, false)
         listView = root.findViewById<ListView>(R.id.listView)
-
-        list.add(Model("Yelahanka", "Satellite bus station", R.drawable.helpwe))
-        list.add(Model("SVIT", "Canteen", R.drawable.btn_rounded))
-        list.add(Model("SVIT", "Boys Hostel", R.drawable.btn_rounded))
         //  list.add(Model("BadBOi3", "Hello!!!", R.drawable.btn_rounded))
 
         listView.adapter = MyAdapter(root.context, R.layout.row, list)

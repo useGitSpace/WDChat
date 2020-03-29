@@ -1,3 +1,7 @@
 package com.example.myapp.ui.main
 
-class Model(val title: String, val description: String, val img: Int)
+import com.example.myapp.R
+
+class Model( val title:String, val description:String, val img:Int = R.drawable.helpwe){
+
+}
