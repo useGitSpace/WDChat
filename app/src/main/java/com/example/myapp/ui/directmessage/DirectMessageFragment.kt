@@ -3,6 +3,7 @@ package com.example.myapp.ui.directmessage
 import android.content.Context
 import android.database.DataSetObserver
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,9 @@ class DirectMessageFragment : Fragment() {
     private var buttonSend: Button? = null
     private var side = false
     private var globalContext: Context? = null
-
+    init{
+        Log.d("DirectMessageFragment", "Init")
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,10 +40,11 @@ class DirectMessageFragment : Fragment() {
         super.onCreate(savedInstanceState)
         buttonSend = root.findViewById<View>(R.id.send) as Button
         listView = root.findViewById<View>(R.id.msgview) as ListView
+        if(chatArrayAdapter == null)
+        {
+            chatArrayAdapter = ChatArrayAdapter(globalContext!!, R.layout.right)
 
-        chatArrayAdapter =
-            ChatArrayAdapter(globalContext!!, R.layout.right)
-
+        }
         listView?.adapter = chatArrayAdapter
         chatText = root.findViewById<View>(R.id.msg) as EditText
         chatText!!.setOnKeyListener { _, keyCode, event ->

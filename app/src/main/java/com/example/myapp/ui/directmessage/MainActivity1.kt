@@ -3,6 +3,7 @@ package com.delta.chatscreen
 import android.app.Activity
 import android.database.DataSetObserver
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AbsListView
@@ -18,6 +19,9 @@ class MainActivity1 : Activity() {
     private var chatText: EditText? = null
     private var buttonSend: Button? = null
     private var side = false
+    init{
+        Log.d("MainActivity1", "Init")
+    }
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

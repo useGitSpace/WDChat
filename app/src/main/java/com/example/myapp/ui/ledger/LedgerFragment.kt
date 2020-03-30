@@ -30,6 +30,7 @@ class LedgerFragment : Fragment() {
         list.add(Model("Yelahanka", "Satellite bus station", R.drawable.helpwe))
         list.add(Model("SVIT", "Canteen", R.drawable.btn_rounded))
         list.add(Model("SVIT", "Boys Hostel"))
+        Log.d("LedgerFragment", "Init")
     }
 
     override fun onCreateView(
@@ -50,25 +51,6 @@ class LedgerFragment : Fragment() {
         }
         val add = root.findViewById<FloatingActionButton>(R.id.add)
         add.setOnClickListener{
-            //            val  dialogBuilder = AlertDialog.Builder(root.context)
-//            dialogBuilder.setTitle("Location?")
-//            val necessities = arrayOf("Water", "Food","First-Aid","Sanitation");
-//            val checked = booleanArrayOf(true, false, true, false)
-//            dialogBuilder.setMultiChoiceItems(necessities, checked){ dialog, which, isChecked ->
-//
-//            }
-//            dialogBuilder.setPositiveButton("OK")
-//            {
-//                dialog, which->
-//                list.add(Model("BadBOi2", "Hello!!", R.drawable.btn_rounded))
-//                listView.adapter = MyAdapter(root.context, R.layout.row, list)
-//
-//            }
-//
-//            dialogBuilder.setNegativeButton("Cancel", null)
-//            dialogBuilder.setMessage("dfasdfsdf")
-//            val dialog = dialogBuilder.create()
-//            dialog.show()
             val intent = Intent(root.context, TakeInput::class.java)
             intent.putExtra("key", "value")
             startActivityForResult(intent, 6969)

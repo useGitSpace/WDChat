@@ -2,6 +2,7 @@ package com.delta.chatscreen
 
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,9 @@ class ChatArrayAdapter(
 ) : ArrayAdapter<ChatMessage>(context, textViewResourceId) {
     private var chatText: TextView? = null
     private var chatMessageList = ArrayList<ChatMessage>()
-
+    init{
+        Log.d("ChatArrayAdapter", "Init")
+    }
     override fun add(`object`: ChatMessage?) {
         chatMessageList.add(`object`!!)
         super.add(`object`)
