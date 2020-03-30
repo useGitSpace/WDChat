@@ -12,7 +12,8 @@
         <activity android:name=".ui.ledger.TakeInput"></activity>
         <activity
             android:name=".Main2Activity"
-            android:label="@string/title_activity_main2" />
+            android:label="@string/title_activity_main2"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
             android:name=".Tab"
             android:label="@string/title_activity_tab2"

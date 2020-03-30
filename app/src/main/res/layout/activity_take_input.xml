@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.ledger.TakeInput"
     android:paddingRight="16px">
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -135,5 +134,6 @@
         android:onClick="onButtonClick"
 
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
