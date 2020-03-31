@@ -1,6 +1,7 @@
 package com.example.myapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -28,7 +29,9 @@ class Main2Activity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
+            menuItem ->
         when (menuItem.itemId) {
             R.id.navigation_directmessage -> {
                 supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, directMessageFragment, "putDirectMessageFragment")
@@ -46,6 +49,7 @@ class Main2Activity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
         }
+
         false
     }
 
