@@ -5,9 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
+import android.location.*
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -19,7 +17,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapp.R
 import kotlinx.android.synthetic.main.activity_take_input.*
-
+import java.io.IOException
+import java.util.*
 
 
 private const val PERMISSION_REQUEST = 10
@@ -50,18 +49,19 @@ class TakeInput : AppCompatActivity() {
             permissionEnabled = true
         }
 
-        val handler = Handler()
-        handler.postDelayed(Runnable {
-            getLocation()
-            handler.postDelayed(this, 5000)
-        }, 0)
-
         if(latitude==null){
-            text_location_accuracy.text = ""
+            text_location_accuracy.text = "6969"
         }
         else{
             text_location_accuracy.text = accuracy.toString()
         }
+
+
+        val handler = Handler()
+        handler.postDelayed(Runnable {
+            getLocation()
+            handler.postDelayed(this, 1000)
+        }, 0)
 
     }
 
@@ -157,21 +157,11 @@ class TakeInput : AppCompatActivity() {
                                 }
                             }
 
-                            override fun onStatusChanged(
-                                provider: String?,
-                                status: Int,
-                                extras: Bundle?
-                            ) {
+                            override fun onStatusChanged(provider: String?,status: Int,extras: Bundle?) { }
 
-                            }
+                            override fun onProviderEnabled(provider: String?) { }
 
-                            override fun onProviderEnabled(provider: String?) {
-
-                            }
-
-                            override fun onProviderDisabled(provider: String?) {
-
-                            }
+                            override fun onProviderDisabled(provider: String?) { }
 
                         })
 
@@ -243,7 +233,19 @@ class TakeInput : AppCompatActivity() {
             text_landmark.requestFocus()
             return
         }
-        location = latitude.toString() + ", " + longitude.toString()
+        val geocoder = Geocoder(applicationContext, Locale.getDefault())
+        try {
+            val listAddresses: List<Address>? =
+                geocoder.getFromLocation(latitude!!, longitude!!, 1)
+            if (null != listAddresses && listAddresses.size > 0) {
+                location = listAddresses[0].getAddressLine(0)
+                Log.d("onButtonClick", "location = "+ location)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        if(location.isNullOrEmpty())
+            location = latitude.toString() + ", " + longitude.toString()
         var landmark = text_landmark.text.toString()
         val intent = Intent()
         intent.putExtra("Location", location)
