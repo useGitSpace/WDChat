@@ -6,12 +6,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapp.ui.main.DatabaseHelper
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
+
+    internal var dbHelper=DatabaseHelper(this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         // get reference to button
         val btn_click_me = findViewById<Button>(R.id.register)
@@ -24,6 +30,9 @@ class MainActivity : AppCompatActivity() {
             if (editTextName.length() > 0) {
                 Toast.makeText(this, "Welcome " + editTextName.text, Toast.LENGTH_SHORT).show()
 
+                handleInserts(editTextName)
+
+
                 val intent = Intent(this, Main2Activity::class.java)
                 finish()
                 startActivity(intent)
@@ -35,5 +44,14 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    private fun handleInserts(name: EditText){
+            try {
+                dbHelper.insertIntoUserInfo(name.text.toString(),"0000000000")
+            }
+            catch (e:Exception){
+
+            }
     }
 }
