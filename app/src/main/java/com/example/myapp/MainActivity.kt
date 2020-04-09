@@ -6,12 +6,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapp.ui.main.DatabaseHelper
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
-    internal var dbHelper=DatabaseHelper(this)
+    internal var dbHelper= DatabaseHelper(this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

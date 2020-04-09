@@ -1,14 +1,14 @@
-package com.example.myapp.ui.main
+package com.example.myapp
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import  android.content.ContentValues
 import android.database.Cursor
-import android.telephony.cdma.CdmaCellLocation
 
 class DatabaseHelper(context: Context):
-    SQLiteOpenHelper(context,DATABASE_NAME,null,1) {
+    SQLiteOpenHelper(context,
+        DATABASE_NAME,null,1) {
 
 
      //   val dbHelper = FeedReaderDbHelper(context)
